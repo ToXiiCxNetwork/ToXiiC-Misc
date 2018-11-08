@@ -22,6 +22,11 @@ public class CommandHandler implements CommandExecutor {
 		lore.add("use this item to spawn a spinning armor stand");
 		lore.add("whatever is in your offhand will appear in the head slot");
 
+		ArrayList<String> help = new ArrayList<String>();
+		help.add("/tmisc help - Show this menu");
+		help.add("/tmisc fi - Gives hologram spawn egg");
+		help.add("/tmisc letter - gives letters");
+
 		if (!(sender instanceof Player)) { // So console can't access command.
 			sender.sendMessage("You must be a player to do this command!");
 			return true;
@@ -32,6 +37,14 @@ public class CommandHandler implements CommandExecutor {
 				return true;
 			} else {
 				switch (args[0]) {
+				case "h":
+				case "help":
+					p.sendMessage("ToXiiC-Misc help");
+					for(String msg : help) {
+						p.sendMessage(msg);
+					}
+					break;
+				case "floatingitem":
 				case "fi":
 					if (p.hasPermission("toxiicmisc.floatingitem")) {
 						ItemStack item = new ItemStack(Material.BAT_SPAWN_EGG);
@@ -41,41 +54,6 @@ public class CommandHandler implements CommandExecutor {
 						item.setItemMeta(meta);
 						p.getInventory().addItem(item);
 						return true;
-					}
-				case "setunb":
-					if (p.hasPermission("toxiicmisc.unbreaking")) {
-						if(args.length > 1) {
-							ItemStack item = p.getItemInHand();
-							ItemMeta meta = item.getItemMeta();
-							meta.setUnbreakable(true);
-							meta.spigot().setUnbreakable(true);
-							meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-							item.setItemMeta(meta);
-							p.setItemInHand(item);
-							return true;
-						} else {
-							ItemStack item = p.getItemInHand();
-							ItemMeta meta = item.getItemMeta();
-							meta.setUnbreakable(true);
-							if (meta.hasItemFlag(ItemFlag.HIDE_UNBREAKABLE)) {
-								meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
-							}
-							item.setItemMeta(meta);
-							p.setItemInHand(item);
-							return true;
-						}
-					}
-				case "setdur":
-					if (p.hasPermission("toxiicmisc.duribility")) {
-						if(args.length > 1) {
-							if (p.getInventory().getItemInMainHand() != null) {
-								p.getInventory().getItemInMainHand().setDurability(Short.valueOf(args[1]));
-								return true;
-							}
-						} else {
-							p.sendMessage("/tmisc setdur [durability]");
-							return true;
-						}
 					}
 				case "letter":
 					if (p.hasPermission("toxiicmisc.letters")) {
