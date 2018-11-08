@@ -24,8 +24,7 @@ public class CommandHandler implements CommandExecutor {
 
 		if (!(sender instanceof Player)) { // So console can't access command.
 			sender.sendMessage("You must be a player to do this command!");
-
-			return false;
+			return true;
 		} else {
 			Player p = (Player) sender;
 			if (args.length == 0) {

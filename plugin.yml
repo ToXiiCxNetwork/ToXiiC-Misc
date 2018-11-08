@@ -6,4 +6,4 @@ commands:
    toxiicmisc:
       description: Base Command
       usage: /<command>
-      aliases: [ tmisc ]
+      aliases: [ tmisc, tm ]
