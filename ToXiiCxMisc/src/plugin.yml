@@ -1,9 +1,0 @@
-name: ToXiiCxMisc
-main: net.toxiic.misc.Main
-version: "1.0"
-
-commands:
-   toxiicmisc:
-      description: Base Command
-      usage: /<command>
-      aliases: [ tmisc ]
