@@ -65,6 +65,8 @@ public class Main extends JavaPlugin implements Listener {
 				Location bloc = e.getClickedBlock().getLocation();
 				Location loc = new Location(bloc.getWorld(), bloc.getX(), bloc.getY() + 1, bloc.getZ());
 				ItemStack item = p.getInventory().getItemInOffHand();
+				loc.setX(loc.getX() + 0.5);
+				loc.setZ(loc.getZ() + 0.5);
 				ArmorStand as = (ArmorStand) loc.getWorld().spawn(loc, ArmorStand.class);
 				as.setHelmet(item);
 				as.setGravity(true);
